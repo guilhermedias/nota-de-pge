@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Minha Nota em PGE</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+
+    <div class="container">
+      <h1 class="text-center" style="margin-bottom: 40px">Minha Nota no G1 em PGE</h1>
+      <div class="row">
+        <div class="col-md-3">
+        </div>
+
+        <div class="col-md-6">
+          <div>
+            <div class="form-group">
+              <label for="nota-p1">Nota na prova 1</label>
+              <input type="text" class="form-control" id="nota-p1" aria-describedby="desc-p1" placeholder="10.0">
+              <small id="desc-p1" class="form-text text-muted">Sua nota na prova 1 conforme exibido no aplicativo da PUCRS.</small>
+            </div>
+
+            <div class="form-group">
+              <label for="nota-t1">Nota no trabalho</label>
+              <input type="text" class="form-control" id="nota-t1" aria-describedby="desc-t1" placeholder="3.0">
+              <small id="desc-t1" class="form-text text-muted">Sua nota no trabalho conforme exibido no aplicativo da PUCRS.</small>
+            </div>
+
+            <div class="form-group">
+              <label for="nota-p2">Nota na prova 2</label>
+              <input type="text" class="form-control" id="nota-p2" aria-describedby="desc-p2" placeholder="10.0">
+              <small id="desc-p2" class="form-text text-muted">Em uma escala que vai de 0.0 a 10.0, quanto você acredita que vai tirar na prova 2?</small>
+            </div>
+
+            <button class="btn btn-primary" onclick="calcularNota()">Calcular</button>
+          </div>
+        </div>
+
+        <div class="col-md-3">
+        </div>
+      </div>
+
+      <div class="row" style="margin-top: 15px">
+        <div class="col-md-3">
+        </div>
+
+        <div class="col-md-6 text-center">
+          <h3 id="nota-g1" hidden>
+          </h3>
+        </div>
+
+        <div class="col-md-3">
+        </div>
+      </div>
+    </div>
+
+    <script>
+      function calcularNota() {
+        var notaP1 = parseFloat(document.getElementById("nota-p1").value) || 0;
+        var notaP2 = parseFloat(document.getElementById("nota-p2").value) || 0;
+        var notaT1 = parseFloat(document.getElementById("nota-t1").value) || 0;
+
+        var notaConvertidaP1 = notaP1 * 0.35;
+        var notaConvertidaP2 = notaP2 * 0.35;
+        var notaConvertidaT1 = notaT1;
+
+        var notaG1 = notaConvertidaP1 + notaConvertidaP2 + notaConvertidaT1;
+
+        var displayParaNota = document.getElementById("nota-g1");
+        displayParaNota.innerHTML = "Sua nota no G1 seria " + notaG1;
+        displayParaNota.innerHTML += notaG1 >= 7 ? " :)" : " :(";
+        displayParaNota.hidden = false;
+      }
+    </script>
+  </body>
+</html>
