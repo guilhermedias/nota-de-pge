@@ -60,9 +60,9 @@
 
     <script>
       function calcularNota() {
-        var notaP1 = parseFloat(document.getElementById("nota-p1").value) || 0;
-        var notaP2 = parseFloat(document.getElementById("nota-p2").value) || 0;
-        var notaT1 = parseFloat(document.getElementById("nota-t1").value) || 0;
+        var notaP1 = parseFloat(document.getElementById("nota-p1").value.replace(",", ".")) || 0;
+        var notaP2 = parseFloat(document.getElementById("nota-p2").value.replace(",", ".")) || 0;
+        var notaT1 = parseFloat(document.getElementById("nota-t1").value.replace(",", ".")) || 0;
 
         var notaConvertidaP1 = notaP1 * 0.35;
         var notaConvertidaP2 = notaP2 * 0.35;
